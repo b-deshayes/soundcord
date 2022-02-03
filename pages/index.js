@@ -1,3 +1,4 @@
+import enforceAuthenticated from '../hooks/enforceAuthenticated'
 import MainLayout from '../layouts/main'
 
 export default function Home({ user }) {
@@ -7,3 +8,5 @@ export default function Home({ user }) {
 Home.getLayout = function getLayout(page) {
   return <MainLayout>{page}</MainLayout>
 }
+
+export const getServerSideProps = enforceAuthenticated()
