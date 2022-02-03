@@ -1,13 +1,9 @@
-import enforceAuthenticated from '../hooks/enforceAuthenticated'
-import AuthLayout from '../layouts/auth'
-import Navbar from '../components/navbar'
+import MainLayout from '../layouts/main'
 
-export default function Home() {
-  return <Navbar />
+export default function Home({ user }) {
+  return <>{JSON.stringify(user, null, 2)} lorem ipsum</>
 }
 
 Home.getLayout = function getLayout(page) {
-  return <AuthLayout>{page}</AuthLayout>
+  return <MainLayout>{page}</MainLayout>
 }
-
-export const getServerSideProps = enforceAuthenticated()

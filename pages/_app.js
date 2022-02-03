@@ -4,11 +4,16 @@ import { createTheme, CssBaseline, NextUIProvider } from '@nextui-org/react'
 import { AuthProvider } from '../lib/auth'
 import { supabase } from '../lib/supabase'
 
+const fonts = {
+  sans: 'Lato, sans-serif',
+}
+
 const theme = createTheme({
   type: 'dark',
   theme: {
+    fonts,
     colors: {
-      background: '#18191c',
+      background: '#36393F',
       accents1: '#1e2023',
     },
   },
@@ -16,11 +21,11 @@ const theme = createTheme({
 
 function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page)
-  return getLayout(
+  return (
     <AuthProvider supabase={supabase}>
       <NextUIProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
       </NextUIProvider>
     </AuthProvider>
   )

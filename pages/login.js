@@ -1,13 +1,13 @@
 import { Button, Card, Text } from '@nextui-org/react'
-import AuthLayout from '../layouts/auth'
 import { useAuth } from '../lib/auth'
 import { Lock } from 'react-iconly'
+import LoginLayout from '../layouts/login'
 
 export default function Login() {
   const { signIn } = useAuth()
 
   return (
-    <div className='flex flex-col w-screen h-screen items-center justify-center'>
+    <>
       <Card css={{ w: '450px' }} className='border-0 p-10' hoverable>
         <Card.Header className='flex justify-center'>
           <Text h1 size={60} css={{ textGradient: '45deg, $blue500 -20%, $pink500 50%' }}>
@@ -28,10 +28,10 @@ export default function Login() {
           </Button>
         </Card.Body>
       </Card>
-    </div>
+    </>
   )
 }
 
 Login.getLayout = function getLayout(page) {
-  return <AuthLayout>{page}</AuthLayout>
+  return <LoginLayout>{page}</LoginLayout>
 }
